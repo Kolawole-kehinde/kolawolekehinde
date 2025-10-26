@@ -161,6 +161,19 @@ const expCards = [
   },
   {
     review:
+      "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+    imgPath: "/images/exp1.png",
+    logoPath: "/images/logo1.png",
+    title: "Frontend Developer",
+    date: "January 2023 - Present",
+    responsibilities: [
+      "Developed and maintained user-facing features for the Hostinger website.",
+      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
+      "Optimized web applications for maximum speed and scalability.",
+    ],
+  },
+  {
+    review:
       "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
     imgPath: "/images/exp2.png",
     logoPath: "/images/logo2.png",
