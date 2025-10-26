@@ -65,7 +65,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-6">
               Crafting responsive, high-performance websites with clean code and a user-focused approach.
             </p>
-            <div className="overflow-hidden border-2 border-purple-600 rounded-lg py-2 mt-4">
+            <div className="overflow-hidden border-2 border-purple-600 rounded-lg py-2 mt-3">
               <div className="flex space-x-6 animate-marquee min-w-max ">
                 {socialLinks.map(({ icon: Icon, href }, i) => (
                   <a
