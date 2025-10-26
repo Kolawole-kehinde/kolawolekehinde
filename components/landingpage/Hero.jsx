@@ -1,6 +1,9 @@
+
+"use client"
 import { words } from "@/constant"
 import Image from "next/image"
 import Button from "../Button"
+import HeroExperience from "../HeroModels/HeroExperience"
 
 
 const HeroSection = () => {
@@ -62,6 +65,12 @@ const HeroSection = () => {
 
 
                 {/* LEFT SECTION */}
+ <figure>
+      <div className="hero-3d-layout">
+        <HeroExperience/>
+      </div>
+ </figure>
+
             </div>
 
         </section>
