@@ -7,9 +7,11 @@ import { useState } from "react";
 import TitleHeader from "../TitleHeader";
 import Image from "next/image";
 import CustomInput from "../CustomInput";
+import axios from "axios";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const {
     control,
@@ -23,16 +25,20 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
+    setStatusMessage(null);
+
     try {
-    //   await emailjs.send(
-    //     process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-    //     process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-    //     data,
-    //     process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-    //   );
-      reset();
+      const res = await axios.post("/api/contact", data);
+
+      if (res.data.success) {
+        setStatusMessage("✅ Message sent successfully!");
+        reset();
+      } else {
+        setStatusMessage("❌ Failed to send message. Please try again.");
+      }
     } catch (err) {
-      console.error("EmailJS error:", err);
+      console.error("Email send error:", err);
+      setStatusMessage("⚠️ Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -91,6 +97,19 @@ const Contact = () => {
                     <img src="/images/arrow-down.svg" alt="arrow" />
                   </div>
                 </button>
+
+                {/* Status Message */}
+                {statusMessage && (
+                  <p
+                    className={`text-sm mt-2 ${
+                      statusMessage.startsWith("✅")
+                        ? "text-green-500"
+                        : "text-red-500"
+                    }`}
+                  >
+                    {statusMessage}
+                  </p>
+                )}
               </form>
             </div>
           </div>
