@@ -41,7 +41,7 @@ const FooterLinkSection = ({ links }: { links: { icon: React.ReactNode; label: s
 
 const Footer = () => {
   return (
-    <footer className="text-white py-8 px-4 lg:px-0 select-none">
+    <footer className="text-white py-8 px-4 lg:px-0 select-none mt-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         
         {/* Left Section */}
