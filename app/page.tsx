@@ -1,4 +1,5 @@
 
+import Contact from '@/components/landingpage/Contact'
 import Experience from '@/components/landingpage/Experience'
 import FeatureCards from '@/components/landingpage/FeatureCards'
 import HeroSection from '@/components/landingpage/Hero'
@@ -12,6 +13,7 @@ const Homepage = () => {
         {/* <LogoShowcase/> */}
         <FeatureCards/>
         <Experience/>
+        <Contact/>
     </main>
   )
 }
