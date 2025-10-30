@@ -7,11 +7,11 @@ import { useState } from "react";
 import TitleHeader from "../TitleHeader";
 import Image from "next/image";
 import CustomInput from "../CustomInput";
-import axios from "axios";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   const {
     control,
@@ -25,20 +25,27 @@ const Contact = () => {
 
   const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
-    setStatusMessage(null);
-
     try {
-      const res = await axios.post("/api/contact", data);
+      const result = await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+        {
+          name: data.name,
+          email: data.email,
+          message: data.message,
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
+      );
 
-      if (res.data.success) {
-        setStatusMessage("✅ Message sent successfully!");
+      if (result.status === 200) {
+        toast.success("Message sent successfully! ✅");
         reset();
       } else {
-        setStatusMessage("❌ Failed to send message. Please try again.");
+        toast.error("Failed to send message. Please try again.");
       }
-    } catch (err) {
-      console.error("Email send error:", err);
-      setStatusMessage("⚠️ Something went wrong. Please try again later.");
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      toast.error("Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -97,19 +104,6 @@ const Contact = () => {
                     <img src="/images/arrow-down.svg" alt="arrow" />
                   </div>
                 </button>
-
-                {/* Status Message */}
-                {statusMessage && (
-                  <p
-                    className={`text-sm mt-2 ${
-                      statusMessage.startsWith("✅")
-                        ? "text-green-500"
-                        : "text-red-500"
-                    }`}
-                  >
-                    {statusMessage}
-                  </p>
-                )}
               </form>
             </div>
           </div>
