@@ -1,79 +1,115 @@
-"use client"
+"use client";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import Button from "../Button";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { ArrowDown } from "lucide-react";
 import { words } from "@/constant";
-import HeroExperience from "../HeroModels/HeroExperience";
-import AnimatedCounter from "./AnimatedCounter";
 
 const HeroSection = () => {
   useGSAP(() => {
     gsap.fromTo(
       ".hero-text h1",
       { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.2, duration: 1, ease: "power2.inOut" }
+      {
+        y: 0,
+        opacity: 1,
+        stagger: 0.2,
+        duration: 1,
+        ease: "power2.inOut",
+      }
     );
+
+    gsap.to(".wrapper", {
+      yPercent: -100 * (words.length - 1),
+      repeat: -1,
+      duration: 4,
+      ease: "power1.inOut",
+      yoyo: true,
+    });
   });
 
-  return (
-    <section id="hero" className="relative overflow-hidden">
+  // 👇 Scroll function
+  const scrollToShowcase = () => {
+    const section = document.getElementById("work");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-      <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="" />
+  return (
+    <section id="hero" className="relative overflow-hidden bg-black text-white">
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/images/bg.png"
+          alt="background"
+          fill
+          className="object-cover opacity-20"
+        />
       </div>
 
-      <div className="hero-layout">
-        {/* LEFT: Hero Content */}
-        <header className="flex flex-col justify-center md:w-full w-screen md:px-20 px-5">
-          <div className="flex flex-col gap-7">
-            <div className="hero-text">
-              <h1>
-                Shaping
-                <span className="slide">
-                  <span className="wrapper">
-                    {words.map((word, index) => (
-                      <span
-                        key={index}
-                        className="flex items-center md:gap-3 gap-1 pb-2"
-                      >
-                        <img
-                          src={word.imgPath}
-                          alt="person"
-                          className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
-                        />
-                        <span>{word.text}</span>
-                      </span>
-                    ))}
-                  </span>
+      {/* Main Container */}
+      <div className="relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex flex-col xl:flex-row items-center justify-between px-6 md:px-20">
+        {/* LEFT: Text Section */}
+        <header className="flex flex-col justify-center gap-7 max-w-2xl">
+          <div className="hero-text text-4xl md:text-6xl font-bold leading-tight">
+            <h1>
+              Shaping{" "}
+              <span className="slide inline-block overflow-hidden align-middle">
+                <span className="wrapper flex flex-col">
+                  {words.map((word, index) => (
+                    <span
+                      key={index}
+                      className="flex items-center md:gap-3 gap-1 pb-2"
+                    >
+                      <Image
+                        src={word.imgPath}
+                        alt="icon"
+                         width={12}
+                         height={12}
+                         priority
+                        className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white"
+                      />
+                      <span>{word.text}</span>
+                    </span>
+                  ))}
                 </span>
-              </h1>
-              <h1>into Real Projects</h1>
-              <h1>that Deliver Results</h1>
-            </div>
-
-            <p className="text-white-50 md:text-xl relative z-10 pointer-events-none">
-              Hi, Khennycool, a developer based in Croatia with a passion for
-              code.
-            </p>
-
-            <Button
-              text="See My Work"
-              className="md:w-80 md:h-16 w-60 h-12"
-              id="counter"
-            />
+              </span>
+            </h1>
+            <h1>into Real Projects</h1>
+            <h1>that Deliver Results</h1>
           </div>
+
+          <p className="text-white/70 md:text-xl">
+            Hi, I’m Khennycool, a developer based in Nigeria with a passion for code.
+          </p>
+
+          {/* CTA Button */}
+          <button
+            onClick={scrollToShowcase} // 👈 added here
+            className="cta-button group disabled:opacity-60 w-[350px]"
+          >
+            <div className="bg-circle" />
+            <p className="text">See my works</p>
+            <div className="arrow-wrapper">
+              <ArrowDown className="size-5 text-black" strokeWidth={2.2} />
+            </div>
+          </button>
         </header>
 
-        {/* RIGHT: 3D Model or Visual */}
-        <figure>
-          <div className="hero-3d-layout">
-            <HeroExperience/>
-          </div>
-        </figure>
+        {/* RIGHT: Illustration */}
+        <div className="hidden xl:flex justify-center items-center w-1/2">
+          <Image
+            src="/images/heroImg.png"
+            alt="hero illustration"
+            width={499}
+            height={388}
+            className="object-contain"
+          />
+        </div>
       </div>
-
-      <AnimatedCounter/>
     </section>
   );
 };

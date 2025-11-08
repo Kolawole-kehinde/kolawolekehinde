@@ -38,7 +38,7 @@ const Contact = () => {
       );
 
       if (result.status === 200) {
-        toast.success("Message sent successfully! ✅");
+        toast.success("Message sent successfully!");
         reset();
       } else {
         toast.error("Failed to send message. Please try again.");
