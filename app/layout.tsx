@@ -25,14 +25,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="relative min-h-screen text-white overflow-hidden bg-[#0f0f0f]">
-        
         <div className="relative z-10">
           <NavBar />
-          <Snowfall />
-          <main>{children}</main>
+          <main>
+            <Snowfall />
+          {children}</main>
           <Footer />
         </div>
-
       </body>
     </html>
   );
