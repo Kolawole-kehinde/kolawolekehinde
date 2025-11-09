@@ -1,8 +1,32 @@
 "use client";
 
 import Image from "next/image";
-import { techStackIcons } from "@/constant";
+import { logoIconsList } from "@/constant";
 import TitleHeader from "../TitleHeader";
+
+interface Icon {
+  name?: string;
+  imgPath: string;
+}
+
+interface LogoIconProps {
+  icon: Icon;
+}
+
+const LogoIcon = ({ icon }: LogoIconProps) => {
+  return (
+    <div className="flex-none flex-center marquee-item hover:scale-110 transition-transform duration-300">
+      <Image
+        src={icon.imgPath}
+        alt={icon.name || "Tech logo"}
+        width={100}
+        height={100}
+        className="object-contain"
+        priority
+      />
+    </div>
+  );
+};
 
 const TechStack = () => {
   return (
@@ -13,44 +37,21 @@ const TechStack = () => {
       />
 
       {/* Scrolling wrapper */}
-      <div className="mt-10 relative w-full overflow-hidden">
-        <div className="tech-marquee flex gap-10 whitespace-nowrap animate-marquee rounded-full">
-          {techStackIcons.map((tech) => (
-            <div
-              key={tech.name}
-              className="tech-card group flex flex-col items-center justify-center p-4 rounded-xl bg-gray-900 hover:scale-110 hover:bg-yellow-500 transition-all duration-300 cursor-pointer"
-            >
-              <Image
-                src={tech.imgPath}
-                alt={tech.name}
-                width={64}
-                height={64}
-                className="mb-2 object-contain"
-              />
-              <p className="text-sm font-medium text-white group-hover:text-black">
-                {tech.name}
-              </p>
-            </div>
-          ))}
+      <div className="md:my-2 relative">
+        <div className="gradient-edge" />
+        <div className="gradient-edge" />
 
-          {/* duplicate for endless effect */}
-          {techStackIcons.map((tech) => (
-            <div
-              key={`${tech.name}-duplicate`}
-              className="tech-card group flex flex-col items-center justify-center p-4 rounded-xl bg-gray-900 hover:scale-110 hover:bg-yellow-500 transition-all duration-300 cursor-pointer"
-            >
-              <Image
-                src={tech.imgPath}
-                alt={tech.name}
-                width={64}
-                height={64}
-                className="mb-2 object-contain"
-              />
-              <p className="text-sm font-medium text-white group-hover:text-black">
-                {tech.name}
-              </p>
-            </div>
-          ))}
+        <div className="marquee h-52">
+          <div className="marquee-box md:gap-12 gap-5">
+            {logoIconsList.map((icon, index) => (
+              <LogoIcon key={index} icon={icon} />
+            ))}
+
+            {/* Duplicate for continuous scroll */}
+            {logoIconsList.map((icon, index) => (
+              <LogoIcon key={`duplicate-${index}`} icon={icon} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
