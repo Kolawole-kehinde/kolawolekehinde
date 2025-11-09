@@ -4,7 +4,7 @@ import "./globals.css";
 import NavBar from "@/components/landingpage/Navbar";
 import Footer from "@/components/landingpage/footer";
 import { Toaster } from "sonner";
-
+import Snowfall from "@/components/Snowfall";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,22 +21,20 @@ export const metadata: Metadata = {
   description: "A personal portfolio website built with Next.js",
 };
 
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <NavBar />
-        {children}
-        <Toaster position="top-center" richColors />
-        <Footer />
+      <body className="relative min-h-screen text-white overflow-hidden bg-[#0f0f0f]">
+        
+        <div className="relative z-10">
+          <NavBar />
+          <Snowfall />
+          <main>{children}</main>
+          <Footer />
+        </div>
+
       </body>
     </html>
   );
 }
+

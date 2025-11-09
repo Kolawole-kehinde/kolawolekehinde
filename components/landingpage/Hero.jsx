@@ -64,12 +64,9 @@ const HeroSection = () => {
                       key={index}
                       className="flex items-center md:gap-3 gap-1 pb-2"
                     >
-                      <Image
+                      <img
                         src={word.imgPath}
                         alt="icon"
-                         width={12}
-                         height={12}
-                         priority
                         className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white"
                       />
                       <span>{word.text}</span>

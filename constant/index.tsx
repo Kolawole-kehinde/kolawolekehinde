@@ -1,3 +1,5 @@
+import { id } from "zod/v4/locales";
+
 const navLinks = [
   {
     name: "Work",
@@ -147,6 +149,7 @@ const techStackIcons = [
 
 const expCards = [
   {
+     id: "1",
     review:
       "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
     imgPath: "/images/exp1.png",
@@ -160,6 +163,7 @@ const expCards = [
     ],
   },
   {
+     id: "2",
     review:
       "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
     imgPath: "/images/exp1.png",
@@ -173,6 +177,7 @@ const expCards = [
     ],
   },
   {
+     id: "3",
     review:
       "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
     imgPath: "/images/exp2.png",
@@ -186,6 +191,7 @@ const expCards = [
     ],
   },
   {
+     id: "4",
     review:
       "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
     imgPath: "/images/exp3.png",

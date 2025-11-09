@@ -468,3 +468,6 @@ section {
 .card:hover::before {
   opacity: 1;
 }
+canvas {
+  filter: blur(0.3px);
+}
