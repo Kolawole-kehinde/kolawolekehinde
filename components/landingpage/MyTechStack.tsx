@@ -1,60 +1,60 @@
 "use client";
 
-import Image from "next/image";
-import { logoIconsList } from "@/constant";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import TitleHeader from "../TitleHeader";
-
-interface Icon {
-  name?: string;
-  imgPath: string;
-}
-
-interface LogoIconProps {
-  icon: Icon;
-}
-
-const LogoIcon = ({ icon }: LogoIconProps) => {
-  return (
-    <div className="flex-none flex-center marquee-item hover:scale-110 transition-transform duration-300">
-      <Image
-        src={icon.imgPath}
-        alt={icon.name || "Tech logo"}
-        width={100}
-        height={100}
-        className="object-contain"
-        priority
-      />
-    </div>
-  );
-};
+import { techStackIcons } from "@/constant";
+import TechIconCardExperience from "../TechIconCardExperience";
 
 const TechStack = () => {
+  useGSAP(() => {
+    gsap.fromTo(
+      ".tech-card",
+      { y: 20, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        ease: "power2.inOut",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: "#skills",
+          start: "top center",
+        },
+      }
+    );
+  });
+
   return (
-    <section id="skills" className="section-padding relative overflow-hidden">
-      <TitleHeader
-        title="My Key Skills & Tools"
-        sub="🤝 Technologies I Work With"
-      />
+    <main id="skills" className="flex-center section-padding mt-10 mb-20">
+      <div className="w-full h-full md:px-10">
+        <TitleHeader
+          title="How I Can Contribute & My Key Skills"
+          sub="🤝 What I Bring to the Table"
+        />
 
-      {/* Scrolling wrapper */}
-      <div className="md:my-2 relative">
-        <div className="gradient-edge" />
-        <div className="gradient-edge" />
+        <div className="tech-grid">
+          {techStackIcons.map((tech) => (
+            <div
+              key={tech.name}
+              className="card-border tech-card overflow-hidden group xl:rounded-xl rounded-lg"
+            >
+              <div className="tech-card-animated-bg" />
 
-        <div className="marquee h-52">
-          <div className="marquee-box md:gap-12 gap-5">
-            {logoIconsList.map((icon, index) => (
-              <LogoIcon key={index} icon={icon} />
-            ))}
+              <div className="tech-card-content">
+                <div className="tech-icon-wrapper">
+                  <TechIconCardExperience model={tech} />
+                </div>
 
-            {/* Duplicate for continuous scroll */}
-            {logoIconsList.map((icon, index) => (
-              <LogoIcon key={`duplicate-${index}`} icon={icon} />
-            ))}
-          </div>
+                <div className="padding-x w-full">
+                  <p>{tech.name}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+    </main>
   );
 };
 

@@ -1,24 +1,11 @@
-import { id } from "zod/v4/locales";
-
 const navLinks = [
-  {
-    name: "Work",
-    link: "#work",
-  },
-  {
-    name: "Experience",
-    link: "#experience",
-  },
-  {
-    name: "Skills",
-    link: "#skills",
-  },
-  {
-    name: "Testimonials",
-    link: "#testimonials",
-  },
+  { name: "Work", link: "#work" },
+  { name: "Experience", link: "#experience" },
+  { name: "Skills", link: "#skills" },
+  { name: "Testimonials", link: "#testimonials" },
 ];
- const words = [
+
+const words = [
   { text: "Ideas", imgPath: "/images/ideas.svg" },
   { text: "Concepts", imgPath: "/images/concepts.svg" },
   { text: "Designs", imgPath: "/images/designs.svg" },
@@ -27,50 +14,20 @@ const navLinks = [
   { text: "Concepts", imgPath: "/images/concepts.svg" },
   { text: "Designs", imgPath: "/images/designs.svg" },
   { text: "Code", imgPath: "/images/code.svg" },
-];
-
-
-const counterItems = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 200, suffix: "+", label: "Satisfied Clients" },
-  { value: 108, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
 ];
 
 const logoIconsList = [
-  {
-    imgPath: "/images/logos/company-logo-1.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-2.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-3.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-4.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-5.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-6.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-7.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-8.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-9.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
-  },
+  { imgPath: "/images/logos/company-logo-1.png" },
+  { imgPath: "/images/logos/company-logo-2.png" },
+  { imgPath: "/images/logos/company-logo-3.png" },
+  { imgPath: "/images/logos/company-logo-4.png" },
+  { imgPath: "/images/logos/company-logo-5.png" },
+  { imgPath: "/images/logos/company-logo-6.png" },
+  { imgPath: "/images/logos/company-logo-7.png" },
+  { imgPath: "/images/logos/company-logo-8.png" },
+  { imgPath: "/images/logos/company-logo-9.png" },
+  { imgPath: "/images/logos/company-logo-10.png" },
+  { imgPath: "/images/logos/company-logo-11.png" },
 ];
 
 const abilities = [
@@ -92,62 +49,48 @@ const abilities = [
 ];
 
 const techStackImgs = [
-  {
-    name: "React Developer",
-    imgPath: "/images/logos/react.png",
-  },
-  {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
-  },
-  {
-    name: "Backend Developer",
-    imgPath: "/images/logos/node.png",
-  },
-  {
-    name: "Interactive Developer",
-    imgPath: "/images/logos/three.png",
-  },
-  {
-    name: "Project Manager",
-    imgPath: "/images/logos/git.svg",
-  },
+  { name: "React Developer", imgPath: "/images/logos/react.png" },
+  { name: "Python Developer", imgPath: "/images/logos/python.svg" },
+  { name: "Backend Developer", imgPath: "/images/logos/node.png" },
+  { name: "Interactive Developer", imgPath: "/images/logos/three.png" },
+  { name: "Project Manager", imgPath: "/images/logos/git.svg" },
 ];
 
-  const techStackIcons = [
+
+export const techStackIcons = [
   {
-    name: "React Developer",
+    name: "React Js",
     modelPath: "/models/react_logo-transformed.glb",
-    scale: 1,
-    rotation: [0, 0, 0],
+    scale: [1, 1, 1] as [number, number, number],
+    rotation: [0, 0, 0] as [number, number, number],
     imgPath: "/logos/react.png",
   },
   {
-    name: "Python Developer",
+    name: "JavaScript Developer",
     modelPath: "/models/python-transformed.glb",
-    scale: 0.8,
-    rotation: [0, 0, 0],
+    scale: [0.8, 0.8, 0.8] as [number, number, number],
+    rotation: [0, 0, 0] as [number, number, number],
     imgPath: "/logos/python.png",
   },
   {
-    name: "Backend Developer",
+    name: "Backend",
     modelPath: "/models/node-transformed.glb",
-    scale: 5,
-    rotation: [0, -Math.PI / 2, 0],
+    scale: [5, 5, 5] as [number, number, number],
+    rotation: [0, -Math.PI / 2, 0] as [number, number, number],
     imgPath: "/logos/node.png",
   },
   {
-    name: "Interactive Developer",
+    name: "NextJs",
     modelPath: "/models/three.js-transformed.glb",
-    scale: 0.05,
-    rotation: [0, 0, 0],
+    scale: [0.05, 0.05, 0.05] as [number, number, number],
+    rotation: [0, 0, 0] as [number, number, number],
     imgPath: "/logos/threejs.png",
   },
   {
-    name: "Project Manager",
+    name: "Supabase",
     modelPath: "/models/git-svg-transformed.glb",
-    scale: 0.05,
-    rotation: [0, -Math.PI / 4, 0],
+    scale: [0.05, 0.05, 0.05] as [number, number, number],
+    rotation: [0, -Math.PI / 4, 0] as [number, number, number],
     imgPath: "/logos/git.png",
   },
 ];
@@ -156,62 +99,55 @@ const techStackImgs = [
 const expCards = [
   {
     id: "1",
+    company: "AppClick Technology",
     review:
-      "Kehinde consistently demonstrates strong problem-solving skills and attention to detail in frontend development projects. He combines design sense with technical precision.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
-    title: "Frontend Developer (Freelance)",
-    date: "March 2024 - Present",
+      "Kehinde showed exceptional growth during his time at AppClick Technology, consistently contributing clean, scalable frontend features.",
+    imgPath: "/images/appClick.png",
+    logoPath: "/images/appClick.png",
+    title: "Frontend Development Intern — AppClick Technology",
+    date: "2023 – June 2024",
     responsibilities: [
-      "Built responsive and accessible web interfaces using React, Next.js, and Tailwind CSS.",
-      "Collaborated with clients to translate UI/UX wireframes into functional websites.",
-      "Optimized web performance through efficient state management and lazy loading.",
+      "Built responsive features using React, JS, Tailwind.",
+      "Developed reusable UI components.",
+      "Collaborated using Git/GitHub and APIs.",
     ],
   },
   {
     id: "2",
+    company: "MyVamsNet Academy",
     review:
-      "Kehinde’s contributions to small business projects have been impactful — helping brands create modern, high-performing websites with clear user journeys.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
-    title: "Web Developer (Personal & Client Projects)",
-    date: "August 2023 - February 2024",
+      "Kehinde’s time at MyVamsNet Academy strengthened his technical foundation.",
+    imgPath: "/images/myvamsnet_logo.png",
+    logoPath: "/images/myvamsnet_logo.png",
+    title: "Frontend Trainee — MyVamsNet Academy",
+    date: "July 2024 – November 2024",
     responsibilities: [
-      "Developed custom landing pages, portfolio sites, and business dashboards.",
-      "Integrated APIs for authentication, payments, and analytics.",
-      "Deployed full-stack projects using Vercel and Railway for scalable hosting.",
+      "Completed training in React and TypeScript.",
+      "Built multiple projects.",
+      "Mastered responsive layouts and UI/UX principles.",
     ],
   },
   {
     id: "3",
+    company: "MyVamsNet",
     review:
-      "As a student developer, Kehinde has shown impressive initiative, building full-stack apps to deepen his understanding of modern web technologies.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
-    title: "Student Developer / Personal Learning Projects",
-    date: "2022 - 2023",
+      "At MyVamsNet, Kehinde contributes to real-world applications with strong attention to detail.",
+    imgPath: "/images/myvamsnet_logo.png",
+    logoPath: "/images/myvamsnet_logo.png",
+    title: "Frontend Development Intern — MyVamsNet",
+    date: "November 2024 – Present",
     responsibilities: [
-      "Built personal projects to practice React Query, Zustand, and API integration.",
-      "Explored backend technologies like Node.js, Express, and MongoDB.",
-      "Implemented authentication and CRUD features across several demo apps.",
+      "Building production-level features in React/TS.",
+      "Implementing scalable component structures.",
+      "Optimizing performance and patterns.",
     ],
   },
 ];
 
-
 const expLogos = [
-  {
-    name: "logo1",
-    imgPath: "/images/logo1.png",
-  },
-  {
-    name: "logo2",
-    imgPath: "/images/logo2.png",
-  },
-  {
-    name: "logo3",
-    imgPath: "/images/logo3.png",
-  },
+  { name: "logo1", imgPath: "/images/appClick.png" },
+  { name: "logo2", imgPath: "/images/myvamsnet_logo.png" },
+  { name: "logo3", imgPath: "/images/myvamsnet_logo.png" },
 ];
 
 const testimonials = [
@@ -219,79 +155,41 @@ const testimonials = [
     name: "Esther Howard",
     mentions: "@estherhoward",
     review:
-      "I can’t say enough good things about Adrian. He was able to take our complex project requirements and turn them into a seamless, functional website. His problem-solving abilities are outstanding.",
+      "Adrian transformed our complex requirements into a seamless functional website.",
     imgPath: "/images/client1.png",
   },
   {
     name: "Wade Warren",
     mentions: "@wadewarren",
     review:
-      "Working with Adrian was a fantastic experience. He transformed our outdated website into a modern, user-friendly platform. His attention to detail and commitment to quality are unmatched. Highly recommend him for any web dev projects.",
+      "Fantastic experience! Attention to detail and commitment to quality.",
     imgPath: "/images/client3.png",
   },
   {
     name: "Guy Hawkins",
     mentions: "@guyhawkins",
     review:
-      "Collaborating with Adrian was an absolute pleasure. His professionalism, promptness, and dedication to delivering exceptional results were evident throughout our project. Adrian's enthusiasm for every facet of development truly stands out. If you're seeking to elevate your website and elevate your brand, Adrian is the ideal partner.",
+      "Professional, prompt, and dedicated. Highly recommended!",
     imgPath: "/images/client2.png",
-  },
-  {
-    name: "Marvin McKinney",
-    mentions: "@marvinmckinney",
-    review:
-      "Adrian was a pleasure to work with. He turned our outdated website into a fresh, intuitive platform that’s both modern and easy to navigate. Fantastic work overall.",
-    imgPath: "/images/client5.png",
-  },
-  {
-    name: "Floyd Miles",
-    mentions: "@floydmiles",
-    review:
-      "Adrian’s expertise in web development is truly impressive. He delivered a robust and scalable solution for our e-commerce site, and our online sales have significantly increased since the launch. He’s a true professional!",
-    imgPath: "/images/client4.png",
-  },
-  {
-    name: "Albert Flores",
-    mentions: "@albertflores",
-    review:
-      "Adrian was a pleasure to work with. He understood our requirements perfectly and delivered a website that exceeded our expectations. His skills in both frontend and backend dev are top-notch.",
-    imgPath: "/images/client6.png",
   },
 ];
 
 const socialImgs = [
-  {
-    name: "insta",
-    url: "https://www.instagram.com/",
-    imgPath: "/images/insta.png",
-  },
-  {
-    name: "fb",
-    url: "https://www.facebook.com/",
-    imgPath: "/images/fb.png",
-  },
-  {
-    name: "x",
-    url: "https://www.x.com/",
-    imgPath: "/images/x.png",
-  },
-  {
-    name: "linkedin",
-    url: "https://www.linkedin.com/",
-    imgPath: "/images/linkedin.png",
-  },
+  { name: "insta", url: "https://www.instagram.com/", imgPath: "/images/insta.png" },
+  { name: "fb", url: "https://www.facebook.com/", imgPath: "/images/fb.png" },
+  { name: "x", url: "https://www.x.com/", imgPath: "/images/x.png" },
+  { name: "linkedin", url: "https://www.linkedin.com/", imgPath: "/images/linkedin.png" },
 ];
 
+// ✅ Group exports (everything except techStackIcons)
 export {
   words,
   abilities,
   logoIconsList,
-  counterItems,
   expCards,
   expLogos,
   testimonials,
   socialImgs,
-  techStackIcons,
   techStackImgs,
   navLinks,
 };

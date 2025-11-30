@@ -47,9 +47,9 @@ section {
     @apply px-5 md:px-20;
   }
 
-  .section-padding {
-    @apply px-5 md:px-10 md:mt-40 mt-20;
-  }
+  /* .section-padding {
+    @apply md:px-10 md:mt-40 mt-20;
+  } */
 
   .mt-responsive {
     @apply xl:mt-20 md:mt-0 mt-40;
@@ -245,7 +245,7 @@ section {
   }
 
   .timeline-logo {
-    @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-black-50 bg-black-100;
+    @apply size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-white bg-black-100;
   }
 
   .exp-card-wrapper {

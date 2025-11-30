@@ -3,9 +3,9 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import { words } from "@/constant";
+import AnimatedCounter from "./AnimatedCounter";
 
 const HeroSection = () => {
   useGSAP(() => {
@@ -85,7 +85,7 @@ const HeroSection = () => {
 
           {/* CTA Button */}
           <button
-            onClick={scrollToShowcase} // 👈 added here
+            onClick={scrollToShowcase}
             className="cta-button group disabled:opacity-60 w-[350px]"
           >
             <div className="bg-circle" />
@@ -107,6 +107,7 @@ const HeroSection = () => {
           />
         </div>
       </div>
+      <AnimatedCounter/>
     </section>
   );
 };
