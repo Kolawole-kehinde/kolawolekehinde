@@ -245,7 +245,7 @@ section {
   }
 
   .timeline-logo {
-    @apply size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-white bg-black-100;
+    @apply size-18 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border-white bg-red-500;
   }
 
   .exp-card-wrapper {
@@ -257,7 +257,7 @@ section {
   }
 
   .tech-card-animated-bg {
-    @apply absolute left-0 bottom-[-100%] w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700;
+    @apply absolute left-0 bottom-full w-full h-full bg-[#2D3240] group-hover:bottom-0 transition-all duration-700;
   }
 
   .tech-card-content {

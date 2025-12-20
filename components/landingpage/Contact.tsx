@@ -4,6 +4,7 @@ import TitleHeader from "../TitleHeader";
 import Image from "next/image";
 import CustomInput from "../CustomInput";
 import { useContactForm } from "@/src/hooks/useContactForm";
+import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   const {
@@ -23,7 +24,7 @@ const Contact = () => {
         />
 
         <div className="grid-12-cols mt-16">
-          {/* Left Side */}
+          {/* Left */}
           <div className="xl:col-span-5">
             <div className="flex-center card-border rounded-xl p-10">
               <form
@@ -54,24 +55,30 @@ const Contact = () => {
                   placeholder="How can I help you?"
                 />
 
+                {/* ✅ Arrow is the submit trigger */}
                 <button
                   type="submit"
                   disabled={!isValid || loading}
                   className="cta-button group disabled:opacity-60"
                 >
                   <div className="bg-circle" />
+
                   <p className="text">
                     {loading ? "Sending..." : "Send Message"}
                   </p>
-                  <div className="arrow-wrapper">
-                    <img src="/images/arrow-down.svg" alt="arrow" />
+
+                  <div className="arrow-wrapper cursor-pointer">
+                    <ArrowUpRight
+                      className="h-6 w-6 text-black transition-transform duration-300 group-hover:-translate-y-1"
+                      strokeWidth={2.5}
+                    />
                   </div>
                 </button>
               </form>
             </div>
           </div>
 
-          {/* Right Side */}
+          {/* Right */}
           <div className="xl:col-span-7 min-h-96 flex justify-center items-center">
             <div className="relative w-[662px] h-[555px]">
               <Image

@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -5,6 +6,7 @@ import NavBar from "@/components/landingpage/Navbar";
 import Footer from "@/components/landingpage/footer";
 import Snowfall from "@/components/Snowfall";
 import { ReactQueryProvider } from "@/src/providers/providers";
+import { Toaster } from "sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,22 +23,26 @@ export const metadata: Metadata = {
   description: "A personal portfolio website built with Next.js",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body className="relative min-h-screen text-white overflow-hidden bg-[#0f0f0f]">
         <div className="relative z-10">
           <NavBar />
+
           <main>
             <Snowfall />
-            <ReactQueryProvider>
-              {children}
-            </ReactQueryProvider>
+            <ReactQueryProvider>{children}</ReactQueryProvider>
           </main>
+
           <Footer />
+          <Toaster richColors position="top-right" />
         </div>
       </body>
     </html>
   );
 }
-
