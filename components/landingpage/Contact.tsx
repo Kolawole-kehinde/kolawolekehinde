@@ -1,55 +1,18 @@
 "use client";
 
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { contactSchema, ContactFormData } from "@/schema/contactSchema";
-import { useState } from "react";
 import TitleHeader from "../TitleHeader";
 import Image from "next/image";
 import CustomInput from "../CustomInput";
-import emailjs from "@emailjs/browser";
-import { toast } from "sonner";
+import { useContactForm } from "@/src/hooks/useContactForm";
 
 const Contact = () => {
-  const [loading, setLoading] = useState(false);
-
   const {
     control,
     handleSubmit,
-    reset,
     formState: { isValid },
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-    mode: "onChange",
-  });
-
-  const onSubmit = async (data: ContactFormData) => {
-    setLoading(true);
-    try {
-      const result = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
-        {
-          name: data.name,
-          email: data.email,
-          message: data.message,
-        },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
-      );
-
-      if (result.status === 200) {
-        toast.success("Message sent successfully!");
-        reset();
-      } else {
-        toast.error("Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      console.error("EmailJS Error:", error);
-      toast.error("Something went wrong. Please try again later.");
-    } finally {
-      setLoading(false);
-    }
-  };
+    onSubmit,
+    loading,
+  } = useContactForm();
 
   return (
     <section id="contact" className="flex-center py-10">
@@ -60,7 +23,7 @@ const Contact = () => {
         />
 
         <div className="grid-12-cols mt-16">
-          {/* ===== Left Side (Form) ===== */}
+          {/* Left Side */}
           <div className="xl:col-span-5">
             <div className="flex-center card-border rounded-xl p-10">
               <form
@@ -108,14 +71,14 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* ===== Right Side (Image) ===== */}
+          {/* Right Side */}
           <div className="xl:col-span-7 min-h-96 flex justify-center items-center">
             <div className="relative w-[662px] h-[555px]">
               <Image
                 src="/images/contactme.png"
                 alt="Contact illustration"
                 fill
-                className="object-cover rounded-[20px] opacity-100"
+                className="object-cover rounded-[20px]"
                 sizes="(max-width: 768px) 100vw, 662px"
                 priority
               />
