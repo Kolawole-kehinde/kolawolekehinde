@@ -1,47 +1,55 @@
+"use client";
 
-"use client"
-
-import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Environment, Float, useGLTF } from "@react-three/drei";
 import { useEffect } from "react";
 import * as THREE from "three";
-
 
 type TechModel = {
   modelPath: string;
   name: string;
   scale: [number, number, number];
-  rotation: [number, number, number]; 
+  rotation: [number, number, number];
 };
 
+// 🔥 Preload model (VERY important)
+useGLTF.preload("/models/react_logo-transformed.glb");
+
 const TechIconCardExperience = ({ model }: { model: TechModel }) => {
-  const scene = useGLTF(model.modelPath);
+  const gltf = useGLTF(model.modelPath);
 
   useEffect(() => {
     if (model.name === "Interactive Developer") {
-      scene.scene.traverse((child) => {
+      gltf.scene.traverse((child) => {
         if (child instanceof THREE.Mesh && child.name === "Object_5") {
-          child.material = new THREE.MeshStandardMaterial({ color: "white" });
+          child.material = new THREE.MeshStandardMaterial({
+            color: "#ffffff",
+          });
         }
       });
     }
-  }, [scene, model.name]);
+  }, [gltf, model.name]);
 
   return (
-    <Canvas>
+    <Canvas
+      dpr={[1, 1.5]}
+      gl={{
+        antialias: false,
+        powerPreference: "high-performance",
+      }}
+      camera={{ position: [0, 0, 4], fov: 45 }}
+    >
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
-      <spotLight position={[10, 15, 10]} angle={0.3} penumbra={1} intensity={2} />
       <Environment preset="city" />
-      <Float speed={5.5} rotationIntensity={0.5} floatIntensity={0.9}>
+
+      <Float speed={3} rotationIntensity={0.4} floatIntensity={0.6}>
         <group scale={model.scale} rotation={model.rotation}>
-          <primitive object={scene.scene} />
+          <primitive object={gltf.scene} />
         </group>
       </Float>
-      <OrbitControls enableZoom={false} />
     </Canvas>
   );
 };
 
 export default TechIconCardExperience;
-

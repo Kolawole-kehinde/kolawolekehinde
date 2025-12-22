@@ -6,33 +6,39 @@ import TitleHeader from "../TitleHeader";
 import { techStackIcons } from "@/src/constant";
 import dynamic from "next/dynamic";
 
-// ✅ THIS IS THE FIX
+// ✅ Disable SSR for Three.js
 const TechIconCardExperience = dynamic(
   () => import("../TechIconCardExperience"),
   { ssr: false }
 );
 
 const TechStack = () => {
-  useGSAP(() => {
-    gsap.fromTo(
-      ".tech-card",
-      { y: 20, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: "power2.inOut",
-        stagger: 0.2,
-        scrollTrigger: {
-          trigger: "#skills",
-          start: "top center",
-        },
-      }
-    );
-  });
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".tech-card",
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: "#skills",
+            start: "top 80%",
+          },
+        }
+      );
+    },
+    { scope: "#skills" }
+  );
 
   return (
-    <main id="skills" className="flex-center section-padding mt-10 mb-20">
+    <section
+      id="skills"
+      className="flex-center section-padding mt-10 mb-20"
+    >
       <div className="w-full h-full md:px-10">
         <TitleHeader
           title="How I Can Contribute & My Key Skills"
@@ -49,7 +55,6 @@ const TechStack = () => {
 
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
-                  {/* ✅ CLIENT-ONLY 3D */}
                   <TechIconCardExperience model={tech} />
                 </div>
 
@@ -61,7 +66,7 @@ const TechStack = () => {
           ))}
         </div>
       </div>
-    </main>
+    </section>
   );
 };
 

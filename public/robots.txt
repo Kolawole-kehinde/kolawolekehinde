@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kolawolekehinde.vercel.app//api/sitemap.xml

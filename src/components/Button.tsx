@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
 
 interface ButtonProps {
   text: string;
@@ -11,14 +10,18 @@ interface ButtonProps {
 
 const Button = ({ text, className, id }: ButtonProps) => {
   return (
-    <a id={id} className={`${className ?? ""} cta-wrapper`}>
+    <a
+      id={id}
+      aria-label={text}
+      className={`${className ?? ""} cta-wrapper`}
+    >
       <div className="cta-button group">
         <div className="bg-circle">
-          <p className="text text-center">{text}</p>
+          <p className="text">{text}</p>
           <div className="arrow-wrapper">
             <Image
               src="/images/arrow-down.svg"
-              alt="arrow"
+              alt="Arrow icon"
               width={24}
               height={24}
             />
