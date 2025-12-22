@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { abilities } from "@/constant";
+import { abilities } from "@/src/constant";
 
 const FeatureCards = () => {
   return (

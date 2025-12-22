@@ -2,7 +2,7 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { expCards } from "@/constant";
+import { expCards } from "@/src/constant";
 import TitleHeader from "../TitleHeader";
 import GlowCard from "../GlowCard";
 import Image from "next/image";

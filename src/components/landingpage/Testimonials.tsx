@@ -1,6 +1,6 @@
 "use client";
 
-import { testimonials } from "@/constant";
+import { testimonials } from "@/src/constant";
 import GlowCard from "../GlowCard";
 import TitleHeader from "../TitleHeader";
 

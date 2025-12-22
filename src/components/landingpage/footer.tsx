@@ -1,4 +1,4 @@
-import { socialImgs } from "@/constant";
+import { socialImgs } from "@/src/constant";
 import Image from "next/image";
 
 interface SocialImage {

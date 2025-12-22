@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { logoIconsList } from "@/constant";
+import { logoIconsList } from "@/src/constant";
 
 interface LogoIconType {
   imgPath: string;

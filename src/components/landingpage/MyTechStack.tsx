@@ -3,8 +3,14 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import TitleHeader from "../TitleHeader";
-import { techStackIcons } from "@/constant";
-import TechIconCardExperience from "../TechIconCardExperience";
+import { techStackIcons } from "@/src/constant";
+import dynamic from "next/dynamic";
+
+// ✅ THIS IS THE FIX
+const TechIconCardExperience = dynamic(
+  () => import("../TechIconCardExperience"),
+  { ssr: false }
+);
 
 const TechStack = () => {
   useGSAP(() => {
@@ -37,12 +43,13 @@ const TechStack = () => {
           {techStackIcons.map((tech) => (
             <div
               key={tech.name}
-              className="card-border tech-card overflow-hidden group rounded-4xl lg:rounded-full "
+              className="card-border tech-card overflow-hidden group rounded-4xl lg:rounded-full"
             >
               <div className="tech-card-animated-bg" />
 
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
+                  {/* ✅ CLIENT-ONLY 3D */}
                   <TechIconCardExperience model={tech} />
                 </div>
 

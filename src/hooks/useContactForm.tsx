@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 
-import { contactSchema, ContactFormData } from "@/schema/contactSchema";
+import { contactSchema, ContactFormData } from "@/src/schema/contactSchema";
 import { useContact } from "./useContact";
 
 export const useContactForm = () => {

@@ -1,6 +1,7 @@
-"use client"
+"use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -8,29 +9,28 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const ShowcaseSection = () => {
-  const sectionRef = useRef(null);
-  const rydeRef = useRef(null);
-  const libraryRef = useRef(null);
-  const ycDirectoryRef = useRef(null);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const rydeRef = useRef<HTMLDivElement | null>(null);
+  const libraryRef = useRef<HTMLDivElement | null>(null);
+  const ycDirectoryRef = useRef<HTMLDivElement | null>(null);
 
   useGSAP(() => {
-    // Animation for the main section
+    if (!sectionRef.current) return;
+
     gsap.fromTo(
       sectionRef.current,
       { opacity: 0 },
       { opacity: 1, duration: 1.5 }
     );
 
-    // Animations for each app showcase
     const cards = [rydeRef.current, libraryRef.current, ycDirectoryRef.current];
 
     cards.forEach((card, index) => {
+      if (!card) return;
+
       gsap.fromTo(
         card,
-        {
-          y: 50,
-          opacity: 0,
-        },
+        { y: 50, opacity: 0 },
         {
           y: 0,
           opacity: 1,
@@ -51,7 +51,12 @@ const ShowcaseSection = () => {
         <div className="showcaselayout">
           <div ref={rydeRef} className="first-project-wrapper">
             <div className="image-wrapper">
-              <img src="/images/project1.png" alt="Ryde App Interface" />
+              <Image
+                src="/images/project1.png"
+                alt="Ryde App Interface"
+                width={600}
+                height={400}
+              />
             </div>
             <div className="text-content">
               <h2>
@@ -68,9 +73,11 @@ const ShowcaseSection = () => {
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={libraryRef}>
               <div className="image-wrapper bg-[#FFEFDB]">
-                <img
+                <Image
                   src="/images/project2.png"
                   alt="Library Management Platform"
+                  width={500}
+                  height={350}
                 />
               </div>
               <h2>The Library Management Platform</h2>
@@ -78,7 +85,12 @@ const ShowcaseSection = () => {
 
             <div className="project" ref={ycDirectoryRef}>
               <div className="image-wrapper bg-[#FFE7EB]">
-                <img src="/images/project3.png" alt="YC Directory App" />
+                <Image
+                  src="/images/project3.png"
+                  alt="YC Directory App"
+                  width={500}
+                  height={350}
+                />
               </div>
               <h2>YC Directory - A Startup Showcase App</h2>
             </div>

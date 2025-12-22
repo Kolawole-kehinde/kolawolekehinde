@@ -1,10 +1,10 @@
 "use client";
 
-import { Controller } from "react-hook-form";
+import { Controller, type Control, type FieldValues, type Path } from "react-hook-form";
 
-interface CustomInputProps {
-  control: any;
-  name: string;
+interface CustomInputProps<T extends FieldValues> {
+  control: Control<T>;
+  name: Path<T>; 
   label: string;
   placeholder?: string;
   type?: string;
@@ -12,7 +12,7 @@ interface CustomInputProps {
   rows?: number;
 }
 
-const CustomInput = ({
+const CustomInput = <T extends FieldValues>({
   control,
   name,
   label,
@@ -20,7 +20,7 @@ const CustomInput = ({
   type = "text",
   multiline = false,
   rows = 4,
-}: CustomInputProps) => {
+}: CustomInputProps<T>) => {
   return (
     <div className="flex flex-col gap-2">
       <label htmlFor={name} className="text-sm font-medium text-gray-700">
@@ -55,9 +55,7 @@ const CustomInput = ({
             )}
 
             {fieldState.error && (
-              <p className="text-xs text-red-500 mt-1">
-                {fieldState.error.message}
-              </p>
+              <p className="text-xs text-red-500 mt-1">{fieldState.error.message}</p>
             )}
           </>
         )}

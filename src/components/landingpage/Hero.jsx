@@ -4,7 +4,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
-import { words } from "@/constant";
+import { words } from "@/src/constant";
 import AnimatedCounter from "./AnimatedCounter";
 
 const HeroSection = () => {
@@ -54,7 +54,7 @@ const HeroSection = () => {
       <div className="relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex flex-col xl:flex-row items-center justify-between px-6 md:px-20">
         {/* LEFT: Text Section */}
         <header className="flex flex-col justify-center gap-7 max-w-2xl">
-          <div className="hero-text text-4xl md:text-6xl font-bold leading-tight">
+          <div className="hero-text text-2xl md:text-[45px] font-bold leading-tight">
             <h1>
               Shaping{" "}
               <span className="slide inline-block overflow-hidden align-middle">
@@ -95,8 +95,8 @@ const HeroSection = () => {
             className="cta-button group disabled:opacity-60 w-[350px]"
           >
             <div className="bg-circle" />
-            <p className="text">Explore My Portfolio</p>
-            <div className="arrow-wrapper">
+            <p className="text">Explore My Portfolio  </p>
+            <div className="arrow-wrapper ml-4">
               <ArrowDown className="size-5 text-black" strokeWidth={2.2} />
             </div>
           </button>

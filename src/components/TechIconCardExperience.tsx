@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Environment, Float, OrbitControls, useGLTF } from "@react-three/drei";
@@ -43,3 +44,4 @@ const TechIconCardExperience = ({ model }: { model: TechModel }) => {
 };
 
 export default TechIconCardExperience;
+

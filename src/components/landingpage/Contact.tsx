@@ -5,6 +5,7 @@ import Image from "next/image";
 import CustomInput from "../CustomInput";
 import { useContactForm } from "@/src/hooks/useContactForm";
 import { ArrowUpRight } from "lucide-react";
+import { ContactFormData } from "@/src/schema/contactSchema";
 
 const Contact = () => {
   const {
@@ -31,14 +32,14 @@ const Contact = () => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="w-full flex flex-col gap-7"
               >
-                <CustomInput
+                <CustomInput<ContactFormData>
                   control={control}
                   name="name"
                   label="Your Name"
                   placeholder="What’s your good name?"
                 />
 
-                <CustomInput
+                <CustomInput<ContactFormData>
                   control={control}
                   name="email"
                   type="email"
@@ -46,7 +47,7 @@ const Contact = () => {
                   placeholder="What’s your email address?"
                 />
 
-                <CustomInput
+                <CustomInput<ContactFormData>
                   control={control}
                   name="message"
                   label="Your Message"
@@ -55,7 +56,7 @@ const Contact = () => {
                   placeholder="How can I help you?"
                 />
 
-                {/* ✅ Arrow is the submit trigger */}
+                {/* Arrow submit button */}
                 <button
                   type="submit"
                   disabled={!isValid || loading}
@@ -63,9 +64,7 @@ const Contact = () => {
                 >
                   <div className="bg-circle" />
 
-                  <p className="text">
-                    {loading ? "Sending..." : "Send Message"}
-                  </p>
+                  <p className="text">{loading ? "Sending..." : "Send Message"}</p>
 
                   <div className="arrow-wrapper cursor-pointer">
                     <ArrowUpRight
