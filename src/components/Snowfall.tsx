@@ -14,19 +14,17 @@ export default function Snowfall() {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
-    // Function to resize canvas dynamically
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     };
     window.addEventListener("resize", handleResize);
 
-    // Create snowflake objects
     const snowflakes = Array.from({ length: 50 }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
       r: Math.random() * 1 + 0.5,
-      d: Math.random() + 0.5,   // density/speed
+      d: Math.random() + 0.5,
     }));
 
     let angle = 0;
@@ -59,17 +57,8 @@ export default function Snowfall() {
 
     draw();
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return (
- <canvas
-  ref={canvasRef}
-  className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
-/>
-
-);
-
+  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none" />;
 }
