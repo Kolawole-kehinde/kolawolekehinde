@@ -1,15 +1,15 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { ReactNode } from "react";
 import { ReactQueryProvider } from "@/src/providers/providers";
 import { Toaster } from "sonner";
 import Script from "next/script";
-import NavBar from "../components/landingpage/Navbar";
-import Footer from "../components/landingpage/footer";
-import { ReactNode } from "react";
 
-// Dynamically import Snowfall so it never SSRs
+// Dynamic imports for client-only components
 const Snowfall = dynamic(() => import("../components/Snowfall"), { ssr: false });
+const NavBar = dynamic(() => import("../components/landingpage/Navbar"), { ssr: false });
+const Footer = dynamic(() => import("../components/landingpage/footer"), { ssr: false });
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (

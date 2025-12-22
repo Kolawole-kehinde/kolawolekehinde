@@ -12,9 +12,6 @@ type TechModel = {
   rotation: [number, number, number];
 };
 
-// 🔥 Preload model (VERY important)
-useGLTF.preload("/models/react_logo-transformed.glb");
-
 const TechIconCardExperience = ({ model }: { model: TechModel }) => {
   const gltf = useGLTF(model.modelPath);
 
@@ -22,9 +19,7 @@ const TechIconCardExperience = ({ model }: { model: TechModel }) => {
     if (model.name === "Interactive Developer") {
       gltf.scene.traverse((child) => {
         if (child instanceof THREE.Mesh && child.name === "Object_5") {
-          child.material = new THREE.MeshStandardMaterial({
-            color: "#ffffff",
-          });
+          child.material = new THREE.MeshStandardMaterial({ color: "#ffffff" });
         }
       });
     }
@@ -33,16 +28,12 @@ const TechIconCardExperience = ({ model }: { model: TechModel }) => {
   return (
     <Canvas
       dpr={[1, 1.5]}
-      gl={{
-        antialias: false,
-        powerPreference: "high-performance",
-      }}
+      gl={{ antialias: false, powerPreference: "high-performance" }}
       camera={{ position: [0, 0, 4], fov: 45 }}
     >
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <Environment preset="city" />
-
       <Float speed={3} rotationIntensity={0.4} floatIntensity={0.6}>
         <group scale={model.scale} rotation={model.rotation}>
           <primitive object={gltf.scene} />

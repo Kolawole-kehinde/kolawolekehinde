@@ -47,7 +47,6 @@ export default function Snowfall() {
       for (const flake of snowflakes) {
         flake.y += Math.pow(flake.d, 2) + 1;
         flake.x += Math.sin(angle) * 0.5;
-
         if (flake.y > height) {
           flake.y = 0;
           flake.x = Math.random() * width;
@@ -56,9 +55,13 @@ export default function Snowfall() {
     };
 
     draw();
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none" />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-full z-0 pointer-events-none"
+    />
+  );
 }
