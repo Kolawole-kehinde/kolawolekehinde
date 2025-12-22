@@ -1,9 +1,13 @@
+
 import { NextResponse } from "next/server";
-import { getResend } from "@/src/lib/resend";
+import { Resend } from "resend";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req: Request) {
   try {
-    const { name, email, message } = await req.json();
+    const body = await req.json();
+    const { name, email, message } = body;
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -11,8 +15,6 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-
-    const resend = getResend();
 
     await resend.emails.send({
       from: process.env.EMAIL_FROM!,
@@ -30,8 +32,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("CONTACT ERROR:", error);
-
+    console.error("CONTACT API ERROR:", error);
     return NextResponse.json(
       { message: "Failed to send message" },
       { status: 500 }
