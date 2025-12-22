@@ -72,12 +72,12 @@ const Experience = () => {
                   <GlowCard card={card} index={index}>
                     {/* FIX: Logo + Company name aligned */}
                     <div className="flex items-center gap-3">
-                      {/* <Image
+                      <Image
                         src={card.imgPath}
                         alt="exp-img"
-                        width={50}
-                        height={50}
-                      /> */}
+                        width={30}
+                        height={30}
+                      />
                       <p className="font-semibold text-lg">{card.company}</p>
                     </div>
                   </GlowCard>

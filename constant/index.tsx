@@ -6,15 +6,16 @@ const navLinks = [
 ];
 
 const words = [
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
-  { text: "Ideas", imgPath: "/images/ideas.svg" },
-  { text: "Concepts", imgPath: "/images/concepts.svg" },
-  { text: "Designs", imgPath: "/images/designs.svg" },
-  { text: "Code", imgPath: "/images/code.svg" },
+  { text: "Bold Ideas", imgPath: "/images/ideas.svg" },
+  { text: "Smart Concepts", imgPath: "/images/concepts.svg" },
+  { text: "Elegant Designs", imgPath: "/images/designs.svg" },
+  { text: "Scalable Code", imgPath: "/images/code.svg" },
+  { text: "Bold Ideas", imgPath: "/images/ideas.svg" },
+  { text: "Smart Concepts", imgPath: "/images/concepts.svg" },
+  { text: "Elegant Designs", imgPath: "/images/designs.svg" },
+  { text: "Scalable Code", imgPath: "/images/code.svg" },
 ];
+
 
 const logoIconsList = [
   { imgPath: "/images/logos/company-logo-1.png" },
@@ -66,14 +67,14 @@ export const techStackIcons = [
     imgPath: "/logos/react.png",
   },
   {
-    name: "JavaScript Developer",
+    name: "JavaScrip",
     modelPath: "/models/python-transformed.glb",
     scale: [0.8, 0.8, 0.8] as [number, number, number],
     rotation: [0, 0, 0] as [number, number, number],
     imgPath: "/logos/python.png",
   },
   {
-    name: "Backend",
+    name: "TypeScript",
     modelPath: "/models/node-transformed.glb",
     scale: [5, 5, 5] as [number, number, number],
     rotation: [0, -Math.PI / 2, 0] as [number, number, number],
@@ -122,8 +123,8 @@ const expCards = [
     title: "Frontend Trainee — MyVamsNet Academy",
     date: "July 2024 – November 2024",
     responsibilities: [
-      "Completed training in React and TypeScript.",
-      "Built multiple projects.",
+      "Completed training in React, TypeScript and nextjs.",
+      "Built multiple real-world projects.",
       "Mastered responsive layouts and UI/UX principles.",
     ],
   },
@@ -137,7 +138,7 @@ const expCards = [
     title: "Frontend Development Intern — MyVamsNet",
     date: "November 2024 – Present",
     responsibilities: [
-      "Building production-level features in React/TS.",
+      "Building production-level features in React/Nextjs/TS.",
       "Implementing scalable component structures.",
       "Optimizing performance and patterns.",
     ],

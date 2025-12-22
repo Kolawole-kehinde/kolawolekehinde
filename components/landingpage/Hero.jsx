@@ -64,9 +64,11 @@ const HeroSection = () => {
                       key={index}
                       className="flex items-center md:gap-3 gap-1 pb-2"
                     >
-                      <img
+                      <Image
                         src={word.imgPath}
                         alt="icon"
+                        width={48}
+                        height={48}
                         className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white"
                       />
                       <span>{word.text}</span>
@@ -75,13 +77,17 @@ const HeroSection = () => {
                 </span>
               </span>
             </h1>
-            <h1>into Real Projects</h1>
-            <h1>that Deliver Results</h1>
+
+            <h1 className="text-primary">into Real-World Products</h1>
+            <h1>that Create Measurable Impact</h1>
           </div>
 
-          <p className="text-white/70 md:text-xl">
-            Hi, I’m Khennycool, a developer based in Nigeria with a passion for code.
+          <p className="text-white/70 md:text-xl max-w-xl">
+            I’m Kolawole Kehinde, a software developer based in Nigeria, building scalable,
+            high-performance web applications and digital products for startups and
+            businesses worldwide.
           </p>
+
 
           {/* CTA Button */}
           <button
@@ -89,7 +95,7 @@ const HeroSection = () => {
             className="cta-button group disabled:opacity-60 w-[350px]"
           >
             <div className="bg-circle" />
-            <p className="text">See my works</p>
+            <p className="text">Explore My Portfolio</p>
             <div className="arrow-wrapper">
               <ArrowDown className="size-5 text-black" strokeWidth={2.2} />
             </div>
@@ -107,7 +113,7 @@ const HeroSection = () => {
           />
         </div>
       </div>
-      <AnimatedCounter/>
+      <AnimatedCounter />
     </section>
   );
 };
