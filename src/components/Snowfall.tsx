@@ -1,11 +1,26 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const MAX_FLAKES = 25; // Reduce number for performance
 
 export default function Snowfall() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [inView, setInView] = useState(false);
+
+  // Lazy-load snowfall only when canvas is in viewport
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    if (canvasRef.current) observer.observe(canvasRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
+    if (!inView) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
@@ -20,7 +35,7 @@ export default function Snowfall() {
     };
     window.addEventListener("resize", handleResize);
 
-    const snowflakes = Array.from({ length: 50 }).map(() => ({
+    const snowflakes = Array.from({ length: MAX_FLAKES }).map(() => ({
       x: Math.random() * width,
       y: Math.random() * height,
       r: Math.random() * 1 + 0.5,
@@ -45,8 +60,9 @@ export default function Snowfall() {
     const update = () => {
       angle += 0.01;
       for (const flake of snowflakes) {
-        flake.y += Math.pow(flake.d, 2) + 1;
-        flake.x += Math.sin(angle) * 0.5;
+        flake.y += Math.pow(flake.d, 2) + 0.5; // slower movement
+        flake.x += Math.sin(angle) * 0.3;
+
         if (flake.y > height) {
           flake.y = 0;
           flake.x = Math.random() * width;
@@ -55,8 +71,9 @@ export default function Snowfall() {
     };
 
     draw();
+
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [inView]);
 
   return (
     <canvas

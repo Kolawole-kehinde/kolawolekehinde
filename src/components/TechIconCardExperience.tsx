@@ -12,10 +12,14 @@ type TechModel = {
   rotation: [number, number, number];
 };
 
+// Preload only essential models
+useGLTF.preload("/models/react_logo-transformed.glb");
+
 const TechIconCardExperience = ({ model }: { model: TechModel }) => {
   const gltf = useGLTF(model.modelPath);
 
   useEffect(() => {
+    // Example: customize specific model materials
     if (model.name === "Interactive Developer") {
       gltf.scene.traverse((child) => {
         if (child instanceof THREE.Mesh && child.name === "Object_5") {
@@ -34,7 +38,7 @@ const TechIconCardExperience = ({ model }: { model: TechModel }) => {
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={1} />
       <Environment preset="city" />
-      <Float speed={3} rotationIntensity={0.4} floatIntensity={0.6}>
+      <Float speed={2} rotationIntensity={0.2} floatIntensity={0.3}>
         <group scale={model.scale} rotation={model.rotation}>
           <primitive object={gltf.scene} />
         </group>
