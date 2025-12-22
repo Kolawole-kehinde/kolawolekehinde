@@ -1,5 +1,5 @@
-import { resend } from "@/lib/resend";
 import { NextResponse } from "next/server";
+import { getResend } from "@/src/lib/resend";
 
 export async function POST(req: Request) {
   try {
@@ -11,6 +11,8 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
+
+    const resend = getResend();
 
     await resend.emails.send({
       from: process.env.EMAIL_FROM!,
@@ -29,6 +31,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("CONTACT ERROR:", error);
+
     return NextResponse.json(
       { message: "Failed to send message" },
       { status: 500 }
