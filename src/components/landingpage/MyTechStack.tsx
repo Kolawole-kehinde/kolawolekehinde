@@ -1,57 +1,39 @@
 "use client";
 
-import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
-import { techStackIcons } from "@/src/constant";
+import { Fade } from "react-awesome-reveal";
 import TitleHeader from "../TitleHeader";
+import TechCard from "../TechIconCardExperience";
+import { techStack } from "@/src/constant/techStack";
 
-const TechIconCardExperience = dynamic(
-  () => import("../TechIconCardExperience"),
-  { ssr: false }
-);
-
-export default function TechStack() {
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => setInView(entry.isIntersecting),
-      { threshold: 0.1 }
-    );
-    const el = document.getElementById("skills");
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+const TechStack = () => {
+  const marqueeItems = [...techStack, ...techStack];
 
   return (
-    <section id="skills" className="flex-center section-padding mt-10 mb-20">
-      <div className="w-full h-full md:px-10">
-        <TitleHeader
-          title="How I Can Contribute & My Key Skills"
-          sub="🤝 What I Bring to the Table"
-        />
+    <section id="skills" className="section-padding mt-12 mb-20">
+      <div className="max-w-6xl mx-auto px-4">
+        <Fade direction="up" triggerOnce>
+          <TitleHeader
+            title="How I Can Contribute & My Key Skills"
+            sub="What I Bring to the Table"
+          />
+        </Fade>
 
-        {inView && (
-          <div className="tech-grid">
-            {techStackIcons.map((tech) => (
-              <div
-                key={tech.name}
-                className="card-border tech-card overflow-hidden group rounded-4xl lg:rounded-full"
-              >
-                <div className="tech-card-animated-bg" />
-                <div className="tech-card-content">
-                  <div className="tech-icon-wrapper">
-                    <TechIconCardExperience model={tech} />
-                  </div>
-                  <div className="padding-x w-full">
-                    <p>{tech.name}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
+        <Fade direction="up" delay={200} triggerOnce>
+          <div className="mt-12 marquee-wrapper">
+            <div className="marquee gap-6">
+              {marqueeItems.map((tech, i) => (
+                <TechCard
+                  key={`${tech.name}-${i}`}
+                  name={tech.name}
+                  Icon={tech.icon}
+                />
+              ))}
+            </div>
           </div>
-        )}
+        </Fade>
       </div>
     </section>
   );
-}
+};
+
+export default TechStack;

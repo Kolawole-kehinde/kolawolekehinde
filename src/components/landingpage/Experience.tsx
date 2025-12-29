@@ -59,7 +59,7 @@ const Experience = () => {
       <div className="w-full h-full md:px-20">
         <TitleHeader
           title="Professional Work Experience"
-          sub="💼 My Career Overview"
+          sub="My Career Overview"
         />
 
         <div className="mt-20 relative">
