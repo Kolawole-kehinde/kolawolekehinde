@@ -9,6 +9,7 @@ import AnimatedCounter from "./AnimatedCounter";
 
 const HeroSection = () => {
   useGSAP(() => {
+    // Headline animation
     gsap.fromTo(
       ".hero-text h1",
       { y: 40, opacity: 0 },
@@ -21,6 +22,7 @@ const HeroSection = () => {
       }
     );
 
+    // Rotating word animation
     gsap.to(".wrapper", {
       yPercent: -100 * (words.length - 1),
       repeat: -1,
@@ -28,6 +30,13 @@ const HeroSection = () => {
       ease: "power1.inOut",
       yoyo: true,
     });
+
+    // Availability badge animation
+    gsap.fromTo(
+      ".availability-badge",
+      { y: 10, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6, delay: 0.2 }
+    );
   });
 
   const scrollToShowcase = () => {
@@ -48,7 +57,7 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 mt-28 xl:mt-20 min-h-[80vh] flex flex-col xl:flex-row items-center justify-between px-6 md:px-20 gap-12">
-        {/* ✅ IMAGE — FIRST ON MOBILE */}
+        {/* ================= IMAGE (FIRST ON MOBILE) ================= */}
         <div className="order-1 xl:order-2 w-full xl:w-1/2 flex justify-center">
           <Image
             src="/images/heroImg.png"
@@ -56,13 +65,23 @@ const HeroSection = () => {
             width={500}
             height={390}
             priority
-            className="w-full xl:w-[500px] h-auto"
+            className="w-full max-w-[500px] h-auto"
           />
         </div>
 
-        {/* ✅ TEXT — SECOND ON MOBILE */}
-        <header className="order-2 xl:order-1 flex flex-col justify-center gap-7 max-w-2xl">
-          <div className="hero-text text-2xl md:text-[45px] font-bold leading-[40px] lg:leading-tight">
+        {/* ================= TEXT ================= */}
+        <header className="order-2 xl:order-1 flex flex-col justify-center gap-6 max-w-2xl">
+          {/* Availability Badge */}
+          <div className="availability-badge inline-flex items-center gap-2 w-fit rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+            </span>
+            <span>Open to Remote Roles</span>
+          </div>
+
+          {/* Headline */}
+          <div className="hero-text text-2xl md:text-[45px] font-bold leading-[40px] md:leading-tight">
             <h1>
               Shaping{" "}
               <span className="slide inline-block overflow-hidden align-middle">
@@ -87,12 +106,13 @@ const HeroSection = () => {
             <h1>that Create Measurable Impact</h1>
           </div>
 
-          {/* 🔥 Slightly improved role clarity */}
+          {/* Subtitle */}
           <p className="text-white/70 md:text-xl max-w-xl">
-            Frontend Engineer specializing in React, Next.js & TypeScript
+            Frontend Engineer specializing in React, Next.js & TypeScript 
             building scalable, high-performance web applications.
           </p>
 
+          {/* CTA */}
           <button
             aria-label="Scroll to portfolio"
             onClick={scrollToShowcase}
@@ -107,6 +127,7 @@ const HeroSection = () => {
         </header>
       </div>
 
+      {/* Stats */}
       <AnimatedCounter />
     </section>
   );
