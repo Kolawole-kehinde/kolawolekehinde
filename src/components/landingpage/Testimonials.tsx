@@ -14,7 +14,7 @@ export interface TestimonialItem {
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="flex-center section-padding my-20">
+    <section id="testimonials" className="flex-center section-padding lg:my-20">
       <div className="w-full h-full md:px-10 px-5">
         <TitleHeader
           title="What People Say About Me?"

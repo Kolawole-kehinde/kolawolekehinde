@@ -2,6 +2,7 @@
 
 import { Fade } from "react-awesome-reveal";
 import TitleHeader from "../TitleHeader";
+import GlowCard from "../GlowCard"; // Import your GlowCard
 
 const workPrinciples = [
   {
@@ -48,17 +49,17 @@ const HowIWork = () => {
         </Fade>
 
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {workPrinciples.map((principle, idx) => (
+          {workPrinciples.map(({ icon, title, desc }, idx) => (
             <Fade key={idx} direction="up" delay={idx * 100} triggerOnce>
-              <div className="p-6 bg-[#1A1A1A] rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="text-4xl mb-4">{principle.icon}</div>
+              <GlowCard index={idx}>
+                <div className="text-4xl mb-4">{icon}</div>
                 <Fade direction="up" delay={150} triggerOnce>
-                  <h3 className="text-xl font-semibold mb-2">{principle.title}</h3>
+                  <h3 className="text-xl font-semibold mb-2">{title}</h3>
                 </Fade>
                 <Fade direction="up" delay={300} triggerOnce>
-                  <p className="text-white-50">{principle.desc}</p>
+                  <p className="text-white-50">{desc}</p>
                 </Fade>
-              </div>
+              </GlowCard>
             </Fade>
           ))}
         </div>

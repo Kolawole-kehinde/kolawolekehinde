@@ -17,7 +17,7 @@ const Contact = () => {
   } = useContactForm();
 
   return (
-    <section id="contact" className="flex-center py-10">
+    <section id="contact" className="flex-center lg:py-10">
       <div className="w-full h-full md:px-10">
         <TitleHeader
           title="Get in Touch – Let’s Connect"
@@ -27,7 +27,7 @@ const Contact = () => {
         <div className="grid-12-cols mt-16">
           {/* Left */}
           <div className="xl:col-span-5">
-            <div className="flex-center card-border rounded-xl p-10">
+            <div className="flex-center card-border rounded-xl p-4 lg:p-10">
               <form
                 onSubmit={handleSubmit(onSubmit)}
                 className="w-full flex flex-col gap-7"

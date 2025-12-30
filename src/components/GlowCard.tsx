@@ -3,18 +3,14 @@ import { useRef } from "react";
 import Image from "next/image";
 
 interface GlowCardProps {
-  card: {
-    review: string;
-  };
+  card?: { review?: string };
   index: number;
   children: React.ReactNode;
 }
 
 const GlowCard = ({ card, index, children }: GlowCardProps) => {
-  // typed refs for all cards
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // when mouse moves over a card, rotate the glow effect
   const handleMouseMove =
     (index: number) => (e: React.MouseEvent<HTMLDivElement>) => {
       const card = cardRefs.current[index];
@@ -32,30 +28,37 @@ const GlowCard = ({ card, index, children }: GlowCardProps) => {
 
   return (
     <div
-      ref={(el) => {
-        cardRefs.current[index] = el;
-      }}
-      onMouseMove={handleMouseMove(index)}
-      className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column relative overflow-hidden"
-    >
+  ref={(el) => {
+    cardRefs.current[index] = el;
+  }}
+  onMouseMove={handleMouseMove(index)}
+  className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column relative overflow-hidden"
+>
+
       <div className="glow pointer-events-none"></div>
 
-      <div className="flex items-center gap-1 mb-5">
-        {Array.from({ length: 5 }, (_, i) => (
-          <Image
-            key={i}
-            src="/images/star.png"
-            alt="star"
-            width={20}
-            height={20}
-            className="object-contain"
-          />
-        ))}
-      </div>
+      {/* Only show stars if review exists */}
+      {card?.review && (
+        <div className="flex items-center gap-1 mb-5">
+          {Array.from({ length: 5 }, (_, i) => (
+            <Image
+              key={i}
+              src="/images/star.png"
+              alt="star"
+              width={20}
+              height={20}
+              className="object-contain"
+            />
+          ))}
+        </div>
+      )}
 
-      <div className="mb-5">
-        <p className="text-white-50 text-lg">{card.review}</p>
-      </div>
+      {/* Only show review if exists */}
+      {card?.review && (
+        <div className="mb-5">
+          <p className="text-white-50 text-lg">{card.review}</p>
+        </div>
+      )}
 
       {children}
     </div>
