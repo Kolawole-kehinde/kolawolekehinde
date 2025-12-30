@@ -1,40 +1,49 @@
 "use client";
 
-import { LucideIcon } from "lucide-react";
+import Image from "next/image";
 
 type TechCardProps = {
   name: string;
-  Icon: LucideIcon;
+  image: string;
+  color: string;
 };
 
-const TechCard = ({ name, Icon }: TechCardProps) => {
+const TechCard = ({ name, image, color }: TechCardProps) => {
   return (
     <div
       className="
-        group relative flex flex-col items-center justify-center
-        w-50 h-50 sm:w-32 sm:h-32
-        rounded-2xl
+        group relative flex flex-col items-center justify-center mt-10
+        w-50 h-60 
+        lg:w-58 lg:h-68 
+        rounded-[100px]
         bg-white/5 backdrop-blur
         border border-white/10
         transition-all duration-300
-        hover:-translate-y-2 hover:shadow-xl
+        hover:-translate-y-2
       "
     >
-      <Icon
-        size={50}
+      <Image
+        src={image}
+        alt={name}
+        width={100}
+        height={100}
         className="
-          text-white
-          transition-transform duration-500
-          group-hover:rotate-[360deg]
+          transition-transform duration-700
+          group-hover:rotate-360
         "
       />
 
-      <span className="mt-3 text-xs sm:text-sm text-white/70">
+      <span className="mt-4 text-sm md:text-base text-white/80">
         {name}
       </span>
 
-      {/* subtle glow */}
-      <span className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition shadow-[0_0_40px_rgba(255,255,255,0.08)]" />
+      {/* color glow */}
+      <span
+        className="absolute inset-0 rounded-[100px] opacity-0 group-hover:opacity-100 transition"
+        style={{
+          boxShadow: `0 0 45px ${color}55`,
+        }}
+      />
     </div>
   );
 };

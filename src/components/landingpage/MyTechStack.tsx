@@ -2,11 +2,11 @@
 
 import { Fade } from "react-awesome-reveal";
 import TitleHeader from "../TitleHeader";
-import TechCard from "../TechIconCardExperience";
 import { techStack } from "@/src/constant/techStack";
+import TechCard from "../TechIconCardExperience";
 
 const TechStack = () => {
-  const marqueeItems = [...techStack, ...techStack];
+  const items = [...techStack, ...techStack];
 
   return (
     <section id="skills" className="section-padding mt-12 mb-20">
@@ -14,18 +14,19 @@ const TechStack = () => {
         <Fade direction="up" triggerOnce>
           <TitleHeader
             title="How I Can Contribute & My Key Skills"
-            sub="What I Bring to the Table"
+            sub=" What I Bring to the Table"
           />
         </Fade>
 
         <Fade direction="up" delay={200} triggerOnce>
           <div className="mt-12 marquee-wrapper">
             <div className="marquee gap-6">
-              {marqueeItems.map((tech, i) => (
+              {items.map((tech, i) => (
                 <TechCard
                   key={`${tech.name}-${i}`}
                   name={tech.name}
-                  Icon={tech.icon}
+                  image={tech.image}
+                  color={tech.color}
                 />
               ))}
             </div>

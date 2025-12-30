@@ -36,7 +36,7 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative overflow-hidden bg-black text-white">
-      {/* Background Image (LCP) */}
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/bg.png"
@@ -47,9 +47,22 @@ const HeroSection = () => {
         />
       </div>
 
-      <div className="relative z-10 xl:mt-20 mt-32 md:h-dvh h-[80vh] flex flex-col xl:flex-row items-center justify-between px-6 md:px-20">
-        <header className="flex flex-col justify-center gap-7 max-w-2xl">
-          <div className="hero-text text-2xl md:text-[45px] font-bold leading-tight">
+      <div className="relative z-10 mt-28 xl:mt-20 min-h-[80vh] flex flex-col xl:flex-row items-center justify-between px-6 md:px-20 gap-12">
+        {/* ✅ IMAGE — FIRST ON MOBILE */}
+        <div className="order-1 xl:order-2 w-full xl:w-1/2 flex justify-center">
+          <Image
+            src="/images/heroImg.png"
+            alt="Hero Illustration"
+            width={500}
+            height={390}
+            priority
+            className="w-full xl:w-[500px] h-auto"
+          />
+        </div>
+
+        {/* ✅ TEXT — SECOND ON MOBILE */}
+        <header className="order-2 xl:order-1 flex flex-col justify-center gap-7 max-w-2xl">
+          <div className="hero-text text-2xl md:text-[45px] font-bold leading-[40px] lg:leading-tight">
             <h1>
               Shaping{" "}
               <span className="slide inline-block overflow-hidden align-middle">
@@ -74,15 +87,16 @@ const HeroSection = () => {
             <h1>that Create Measurable Impact</h1>
           </div>
 
+          {/* 🔥 Slightly improved role clarity */}
           <p className="text-white/70 md:text-xl max-w-xl">
-            I’m Kolawole Kehinde, a software developer based in Nigeria,
+            Frontend Engineer specializing in React, Next.js & TypeScript
             building scalable, high-performance web applications.
           </p>
 
           <button
             aria-label="Scroll to portfolio"
             onClick={scrollToShowcase}
-            className="cta-button group w-[350px]"
+            className="cta-button group w-[300px] sm:w-[350px]"
           >
             <div className="bg-circle" />
             <p className="text">Explore My Portfolio</p>
@@ -91,16 +105,6 @@ const HeroSection = () => {
             </div>
           </button>
         </header>
-
-        <div className="hidden xl:flex w-1/2 justify-center">
-          <Image
-            src="/images/heroImg.png"
-            alt="Hero Illustration"
-            width={500}
-            height={390}
-            priority
-          />
-        </div>
       </div>
 
       <AnimatedCounter />

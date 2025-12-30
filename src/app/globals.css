@@ -472,19 +472,14 @@ canvas {
   filter: blur(0.3px);
 }
 
-@keyframes marquee {
-  0% {
+
+@keyframes marquee-x {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
   }
-}
-
-.marquee {
-  display: flex;
-  width: max-content;
-  animation: marquee 25s linear infinite;
 }
 
 .marquee-wrapper {
@@ -498,9 +493,21 @@ canvas {
   );
 }
 
-@media (max-width: 768px) {
+.marquee {
+  display: flex;
+  flex-direction: row; /* 👈 force horizontal */
+  width: max-content;
+  animation: marquee-x 22s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
+
+/* mobile speed tweak only (NO direction change) */
+@media (max-width: 640px) {
   .marquee {
-    animation-duration: 18s;
+    animation-duration: 16s;
   }
 }
 
