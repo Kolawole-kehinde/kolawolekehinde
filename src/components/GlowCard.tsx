@@ -1,65 +1,63 @@
 "use client";
+import { Star } from "lucide-react";
 import { useRef } from "react";
-import Image from "next/image";
 
 interface GlowCardProps {
-  card?: { review?: string };
   index: number;
+  card?: {
+    review?: string;
+  };
   children: React.ReactNode;
 }
 
-const GlowCard = ({ card, index, children }: GlowCardProps) => {
+const GlowCard = ({ index, card, children }: GlowCardProps) => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const handleMouseMove =
     (index: number) => (e: React.MouseEvent<HTMLDivElement>) => {
-      const card = cardRefs.current[index];
-      if (!card) return;
+      const cardEl = cardRefs.current[index];
+      if (!cardEl) return;
 
-      const rect = card.getBoundingClientRect();
+      const rect = cardEl.getBoundingClientRect();
       const mouseX = e.clientX - rect.left - rect.width / 2;
       const mouseY = e.clientY - rect.top - rect.height / 2;
 
       let angle = Math.atan2(mouseY, mouseX) * (180 / Math.PI);
       angle = (angle + 360) % 360;
 
-      card.style.setProperty("--start", `${angle + 60}`);
+      cardEl.style.setProperty("--start", `${angle + 60}`);
     };
 
   return (
     <div
-  ref={(el) => {
-    cardRefs.current[index] = el;
-  }}
-  onMouseMove={handleMouseMove(index)}
-  className="card card-border timeline-card rounded-xl p-10 mb-5 break-inside-avoid-column relative overflow-hidden"
->
+      ref={(el) => {
+        cardRefs.current[index] = el;
+      }}
+      onMouseMove={handleMouseMove(index)}
+      className="card card-border timeline-card rounded-xl p-8 mb-5 relative overflow-hidden"
+    >
+      <div className="glow pointer-events-none" />
 
-      <div className="glow pointer-events-none"></div>
 
-      {/* Only show stars if review exists */}
+      {/* ⭐ Stars */}
       {card?.review && (
-        <div className="flex items-center gap-1 mb-5">
-          {Array.from({ length: 5 }, (_, i) => (
-            <Image
+        <div className="flex items-center gap-1 mb-4">
+          {Array.from({ length: 5 }).map((_, i) => (
+            <Star
               key={i}
-              src="/images/star.png"
-              alt="star"
-              width={20}
-              height={20}
-              className="object-contain"
+              size={18}
+              className="fill-yellow-400 text-yellow-400"
             />
           ))}
         </div>
       )}
 
-      {/* Only show review if exists */}
+      {/* Review text */}
       {card?.review && (
-        <div className="mb-5">
-          <p className="text-white-50 text-lg">{card.review}</p>
-        </div>
+        <p className="text-white-50 text-base leading-relaxed mb-6">
+          {card.review}
+        </p>
       )}
-
       {children}
     </div>
   );

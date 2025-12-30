@@ -6,7 +6,6 @@ import HeroSection from '@/src/components/landingpage/Hero'
 import ShowcaseSection from '@/src/components/landingpage/ShowcaseSection'
 import Testimonials from '@/src/components/landingpage/Testimonials'
 import TechStack from '../components/landingpage/MyTechStack'
-import HowIWork from '../components/landingpage/HowIWork' 
 
 const Homepage = () => {
   return (
@@ -14,9 +13,9 @@ const Homepage = () => {
         <HeroSection/>
         <ShowcaseSection/>
         {/* <LogoShowcase/> */}
-        <FeatureCards/>
         <TechStack/>
-        <HowIWork/>
+        <FeatureCards/>
+        {/* <HowIWork/> */}
         <Experience/>
         <Testimonials/>
         <Contact/>

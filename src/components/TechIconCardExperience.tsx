@@ -14,7 +14,7 @@ const TechCard = ({ name, image, color }: TechCardProps) => {
       className="
         group relative flex flex-col items-center justify-center mt-10
         w-50 h-60 
-        lg:w-58 lg:h-68 
+        lg:w-52 lg:h-68 
         rounded-[100px]
         bg-white/5 backdrop-blur
         border border-white/10

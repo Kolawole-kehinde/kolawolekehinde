@@ -32,11 +32,27 @@ const logoIconsList = [
 ];
 
 const abilities = [
+     {
+     imgPath: "/images/seo.png",
+    title: "Performance & Optimization",
+    desc: "I build fast, efficient UIs and optimize React/Next.js apps for speed.",
+  },
+     {imgPath: "/images/time.png",
+    title: "Accessibility & UX",
+    desc: "I ensure interfaces are accessible and intuitive for all users.",
+  },
+  {
+     imgPath: "/images/seo.png",
+    title: "Reusable Components",
+    desc: "I design scalable, maintainable component libraries to speed up development.",
+  },
   {
     imgPath: "/images/seo.png",
     title: "Quality Focus",
     desc: "Delivering high-quality results while maintaining attention to every detail.",
   },
+
+
   {
     imgPath: "/images/chat.png",
     title: "Reliable Communication",
@@ -157,7 +173,7 @@ const testimonials = [
     name: "Esther Howard",
     mentions: "@estherhoward",
     review:
-      "Adrian transformed our complex requirements into a seamless functional website.",
+      "Kehinde transformed our complex requirements into a seamless functional website.",
     imgPath: "/images/client1.png",
   },
   {

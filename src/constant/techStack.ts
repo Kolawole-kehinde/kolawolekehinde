@@ -1,7 +1,7 @@
 export const techStack = [
   {
     name: "JavaScript",
-   image: "/images/React.png",
+   image: "/images/JS.png",
     color: "#facc15",
   },
   {
@@ -11,22 +11,22 @@ export const techStack = [
   },
   {
     name: "TypeScript",
-    image: "/images/React.png",
+    image: "/images/ts.png",
     color: "#3178c6",
   },
   {
     name: "Next.js",
-   image: "/images/React.png",
+   image: "/images/next.png",
     color: "#ffffff",
   },
   {
     name: "Tailwind CSS",
-    image: "/images/React.png",
+    image: "/images/tailwind.png",
     color: "#38bdf8",
   },
   {
     name: "Supabase",
-    image: "/images/React.png",
+    image: "/images/supbase.png",
     color: "#3ecf8e",
   },
 ];

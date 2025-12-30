@@ -3,41 +3,49 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import { ArrowDown } from "lucide-react";
 import { words } from "@/src/constant";
-import AnimatedCounter from "./AnimatedCounter";
+
+const AnimatedCounter = dynamic(() => import("./AnimatedCounter"), {
+  ssr: false,
+});
 
 const HeroSection = () => {
   useGSAP(() => {
-    // Headline animation
-    gsap.fromTo(
-      ".hero-text h1",
-      { y: 40, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        stagger: 0.15,
-        duration: 0.8,
-        ease: "power2.out",
-      }
-    );
+    const runAnimations = () => {
+      gsap.fromTo(
+        ".hero-text h1",
+        { y: 40, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          stagger: 0.15,
+          duration: 0.8,
+          ease: "power2.out",
+        }
+      );
 
-    // Rotating word animation
-    gsap.to(".wrapper", {
-      yPercent: -100 * (words.length - 1),
-      repeat: -1,
-      duration: 4,
-      ease: "power1.inOut",
-      yoyo: true,
-    });
+      gsap.to(".wrapper", {
+        yPercent: -100 * (words.length - 1),
+        repeat: -1,
+        duration: 4,
+        ease: "power1.inOut",
+        yoyo: true,
+      });
+      gsap.fromTo(
+        ".availability-badge",
+        { y: 10, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6 }
+      );
+    };
 
-    // Availability badge animation
-    gsap.fromTo(
-      ".availability-badge",
-      { y: 10, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, delay: 0.2 }
-    );
-  });
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(runAnimations);
+    } else {
+      setTimeout(runAnimations, 200);
+    }
+  }, []);
 
   const scrollToShowcase = () => {
     document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
@@ -45,19 +53,19 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative overflow-hidden bg-black text-white">
-      {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/bg.png"
-          alt="Background"
+          alt=""
           fill
-          priority
+          loading="lazy"
           className="object-cover opacity-20"
+          aria-hidden
         />
       </div>
 
       <div className="relative z-10 mt-28 xl:mt-20 min-h-[80vh] flex flex-col xl:flex-row items-center justify-between px-6 md:px-20 gap-12">
-        {/* ================= IMAGE (FIRST ON MOBILE) ================= */}
+        {/* Image */}
         <div className="order-1 xl:order-2 w-full xl:w-1/2 flex justify-center">
           <Image
             src="/images/heroImg.png"
@@ -69,9 +77,8 @@ const HeroSection = () => {
           />
         </div>
 
-        {/* ================= TEXT ================= */}
+        {/* Text */}
         <header className="order-2 xl:order-1 flex flex-col justify-center gap-6 max-w-2xl">
-          {/* Availability Badge */}
           <div className="availability-badge inline-flex items-center gap-2 w-fit rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white/80 backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -81,10 +88,10 @@ const HeroSection = () => {
           </div>
 
           {/* Headline */}
-          <div className="hero-text text-2xl md:text-[45px] font-bold leading-[40px] md:leading-tight">
+          <div className="hero-text text-2xl md:text-[45px] font-bold leading-10 md:leading-tight">
             <h1>
               Shaping{" "}
-              <span className="slide inline-block overflow-hidden align-middle">
+              <span className="slide inline-block overflow-hidden align-middle h-12 md:h-14">
                 <span className="wrapper flex flex-col">
                   {words.map((word, index) => (
                     <span key={index} className="flex items-center gap-2 pb-2">
@@ -108,7 +115,7 @@ const HeroSection = () => {
 
           {/* Subtitle */}
           <p className="text-white/70 md:text-xl max-w-xl">
-            Frontend Engineer specializing in React, Next.js & TypeScript 
+            Frontend Engineer specializing in React, Next.js & TypeScript
             building scalable, high-performance web applications.
           </p>
 
@@ -127,7 +134,7 @@ const HeroSection = () => {
         </header>
       </div>
 
-      {/* Stats */}
+      {/* Stats (lazy) */}
       <AnimatedCounter />
     </section>
   );

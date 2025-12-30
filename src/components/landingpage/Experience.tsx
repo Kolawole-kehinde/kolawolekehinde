@@ -66,21 +66,20 @@ const Experience = () => {
           <div className="relative z-40 xl:space-y-32 space-y-10">
             {expCards?.map((card, index) => (
               <div key={card.id} className="exp-card-wrapper">
-                
                 {/* LEFT CARD */}
                 <div className="xl:w-2/6">
-                  <GlowCard card={card} index={index}>
-                    {/* FIX: Logo + Company name aligned */}
+                  <GlowCard index={index} card={card}>
                     <div className="flex items-center gap-3">
                       <Image
                         src={card.imgPath}
-                        alt="exp-img"
+                        alt={card.company}
                         width={30}
                         height={30}
                       />
                       <p className="font-semibold text-lg">{card.company}</p>
                     </div>
                   </GlowCard>
+
                 </div>
 
                 {/* RIGHT SIDE */}
@@ -92,42 +91,33 @@ const Experience = () => {
                     </div>
 
                     <div className="expText flex xl:gap-20 md:gap-10 relative z-20">
-
-                      {/* FIX: Logo + Company name aligned */}
-                    <div className="timeline-logo">
-                      <Image
-                        src={card.imgPath}
-                        alt="exp-img"
-                        width={150}
-                        height={150}
-                      />
-                    </div>
+                      <div className="timeline-logo">
+                        <Image
+                          src={card.imgPath}
+                          alt={card.company}
+                          width={150}
+                          height={150}
+                        />
+                      </div>
 
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>
-                        <p className="my-5 text-white-50">
-                          🗓️&nbsp;{card.date}
-                        </p>
+                        <p className="my-5 text-white-50">🗓️ {card.date}</p>
                         <p className="text-[#839CB5] italic">Responsibilities</p>
 
                         <ul className="list-disc mt-5 flex flex-col gap-5 text-white-50">
-                          {card.responsibilities.map((responsibility, idx) => (
-                            <li key={idx} className="text-lg">
-                              {responsibility}
-                            </li>
+                          {card.responsibilities.map((r, idx) => (
+                            <li key={idx} className="text-lg">{r}</li>
                           ))}
                         </ul>
                       </div>
-
                     </div>
                   </div>
                 </div>
-
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );
