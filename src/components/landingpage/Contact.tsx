@@ -21,7 +21,7 @@ const Contact = () => {
       <div className="w-full h-full md:px-10">
         <TitleHeader
           title="Get in Touch – Let’s Connect"
-          sub="💬 Have questions or ideas? Let’s talk! 🚀"
+          sub=" Have questions or ideas? Let’s talk! "
         />
 
         <div className="grid-12-cols mt-16">
