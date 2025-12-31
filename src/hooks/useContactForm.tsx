@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
@@ -9,16 +8,19 @@ import { contactSchema, ContactFormData } from "@/src/schema/contactSchema";
 import { useContact } from "./useContact";
 
 export const useContactForm = () => {
-  const [loading, setLoading] = useState(false);
-  const { mutateAsync } = useContact();
+  const { mutateAsync, isPending } = useContact();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     mode: "onChange",
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    setLoading(true);
     try {
       await mutateAsync(data);
       toast.success("Message sent successfully!");
@@ -26,14 +28,12 @@ export const useContactForm = () => {
     } catch (error) {
       console.error(error);
       toast.error("Failed to send message. Please try again.");
-    } finally {
-      setLoading(false);
     }
   };
 
   return {
     ...form,
     onSubmit,
-    loading,
+    loading: isPending,
   };
 };

@@ -1,10 +1,11 @@
 "use client";
 
-import TitleHeader from "../TitleHeader";
 import Image from "next/image";
+import TitleHeader from "../TitleHeader";
 import CustomInput from "../CustomInput";
-import { useContactForm } from "@/src/hooks/useContactForm";
 import { ArrowUpRight } from "lucide-react";
+
+import { useContactForm } from "@/src/hooks/useContactForm";
 import { ContactFormData } from "@/src/schema/contactSchema";
 
 const Contact = () => {
@@ -21,7 +22,7 @@ const Contact = () => {
       <div className="w-full h-full md:px-10">
         <TitleHeader
           title="Get in Touch – Let’s Connect"
-          sub=" Have questions or ideas? Let’s talk! "
+          sub="Have questions or ideas? Let’s talk!"
         />
 
         <div className="grid-12-cols mt-16">
@@ -56,7 +57,6 @@ const Contact = () => {
                   placeholder="How can I help you?"
                 />
 
-                {/* Arrow submit button */}
                 <button
                   type="submit"
                   disabled={!isValid || loading}
@@ -64,11 +64,13 @@ const Contact = () => {
                 >
                   <div className="bg-circle" />
 
-                  <p className="text">{loading ? "Sending..." : "Send Message"}</p>
+                  <p className="text">
+                    {loading ? "Sending..." : "Send Message"}
+                  </p>
 
-                  <div className="arrow-wrapper cursor-pointer">
+                  <div className="arrow-wrapper">
                     <ArrowUpRight
-                      className="h-6 w-6 text-black transition-transform duration-300 group-hover:-translate-y-1"
+                      className="h-6 w-6 text-black transition-transform duration-300 group-hover:translate-y-0"
                       strokeWidth={2.5}
                     />
                   </div>

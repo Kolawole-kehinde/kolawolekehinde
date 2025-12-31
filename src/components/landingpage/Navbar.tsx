@@ -43,7 +43,7 @@ const NavBar = () => {
                 >
                   {name}
                 </a>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+                <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-yellow-400 transition-all duration-300 group-hover:w-full" />
               </li>
             ))}
           </ul>

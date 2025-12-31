@@ -1,10 +1,15 @@
 "use client";
 
-import { Controller, type Control, type FieldValues, type Path } from "react-hook-form";
+import {
+  Controller,
+  type Control,
+  type FieldValues,
+  type Path,
+} from "react-hook-form";
 
 interface CustomInputProps<T extends FieldValues> {
   control: Control<T>;
-  name: Path<T>; 
+  name: Path<T>;
   label: string;
   placeholder?: string;
   type?: string;
@@ -35,6 +40,7 @@ const CustomInput = <T extends FieldValues>({
             {multiline ? (
               <textarea
                 {...field}
+                value={field.value ?? ""}
                 id={name}
                 placeholder={placeholder}
                 rows={rows}
@@ -45,6 +51,7 @@ const CustomInput = <T extends FieldValues>({
             ) : (
               <input
                 {...field}
+                value={field.value ?? ""} 
                 id={name}
                 type={type}
                 placeholder={placeholder}
@@ -55,7 +62,9 @@ const CustomInput = <T extends FieldValues>({
             )}
 
             {fieldState.error && (
-              <p className="text-xs text-red-500 mt-1">{fieldState.error.message}</p>
+              <p className="text-xs text-red-500 mt-1">
+                {fieldState.error.message}
+              </p>
             )}
           </>
         )}
