@@ -1,5 +1,8 @@
 export const metadata = {
   metadataBase: new URL("https://kolawolekehinde.vercel.app/"),
+   alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Kolawole Kehinde | Software Developer Building Scalable Web Applications",
     template: "%s | Kolawole Kehinde",
