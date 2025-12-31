@@ -9,7 +9,7 @@ const TechStack = () => {
   const items = [...techStack, ...techStack];
 
   return (
-    <section id="skills" className="section-padding mt-12 mb-20">
+    <section id="tech-stack" className="section-padding mt-12 mb-20">
       <div className="max-w-6xl mx-auto px-4">
         <Fade direction="up" triggerOnce>
           <TitleHeader

@@ -29,7 +29,8 @@ const NavBar = () => {
           href="#hero"
           className="text-lg font-semibold tracking-wide hover:text-yellow-400 transition-colors"
         >
-         Khennycool
+          <span className="sr-only">Kolawole Kehinde</span>
+          <span aria-hidden>KK</span>
         </a>
 
         {/* Desktop Navigation */}
@@ -50,12 +51,12 @@ const NavBar = () => {
         </nav>
 
         {/* Contact Button (Desktop) */}
-        <Link
+        <a
           href="#contact"
           className="hidden md:flex items-center justify-center bg-white text-black font-semibold px-4 py-2 rounded-full hover:bg-yellow-400 hover:text-white transition-all"
         >
           Contact Me
-        </Link>
+        </a>
 
         {/* Mobile Menu Toggle */}
         <button
@@ -84,13 +85,13 @@ const NavBar = () => {
             ))}
           </ul>
 
-          <Link
+          <a
             href="#contact"
             className="mt-4 block w-full text-center bg-white text-black font-semibold py-2 rounded-full hover:bg-yellow-400 hover:text-white transition-all"
             onClick={() => setMenuOpen(false)}
           >
             Contact Me
-          </Link>
+          </a>
         </div>
       )}
     </header>

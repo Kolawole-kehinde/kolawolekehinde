@@ -65,7 +65,7 @@ const ShowcaseSection = () => {
   }, []);
 
   return (
-    <div id="work" ref={sectionRef} className="app-showcase">
+    <section id="work" ref={sectionRef} className="app-showcase">
       <div className="w-full">
         <div className="showcaselayout">
           {/* FIRST PROJECT */}
@@ -152,7 +152,7 @@ const ShowcaseSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -53,6 +53,9 @@ const HeroSection = () => {
 
   return (
     <section id="hero" className="relative overflow-hidden bg-black text-white">
+      <h1 className="sr-only">
+        Kolawole Kehinde – Frontend Engineer & Software Developer
+      </h1>
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/bg.png"
@@ -69,7 +72,7 @@ const HeroSection = () => {
         <div className="order-1 xl:order-2 w-full xl:w-1/2 flex justify-center">
           <Image
             src="/images/heroImg.png"
-            alt="Hero Illustration"
+            alt="Kolawole Kehinde – Frontend Engineer Illustration"
             width={500}
             height={390}
             priority
@@ -89,7 +92,7 @@ const HeroSection = () => {
 
           {/* Headline */}
           <div className="hero-text text-2xl md:text-[45px] font-bold leading-10 md:leading-tight">
-            <h1>
+            <h2>
               Shaping{" "}
               <span className="slide inline-block overflow-hidden align-middle h-12 md:h-14">
                 <span className="wrapper flex flex-col">
@@ -107,15 +110,15 @@ const HeroSection = () => {
                   ))}
                 </span>
               </span>
-            </h1>
+            </h2>
 
-            <h1 className="text-primary">into Real-World Products</h1>
-            <h1>that Create Measurable Impact</h1>
+            <h2 className="text-primary">into Real-World Products</h2>
+            <h2>that Create Measurable Impact</h2>
           </div>
 
           {/* Subtitle */}
           <p className="text-white/70 md:text-xl max-w-xl">
-            Frontend Engineer specializing in React, Next.js & TypeScript
+            Hi, I’m <strong>Kolawole Kehinde</strong>, a Frontend Engineer based in Nigeria, specializing in React, Next.js & TypeScript
             building scalable, high-performance web applications.
           </p>
 
